@@ -20,13 +20,15 @@ if not ENDPOINTS:
 class BuildTestCase(type):
     def __new__(cls, name, bases, attrs):
         for endpoint, status_code in ENDPOINTS:
-            name = 'test_proofread: GET %d %s' % (status_code, endpoint)
-            attrs[name] = (lambda endpoint, expected:
-                                lambda self:
-                                    self.assertEqual(self.client.get(endpoint).status_code, expected)
-                          )(endpoint, status_code)
-            attrs[name].__name__ = name
-            attrs[name].__doc__ = '`%s` should respond with a %d' % (endpoint, status_code)
+            test_name = 'test_proofread: GET %d %s' % (status_code, endpoint)
+            def make_test(endpoint, status_code):
+                def run(self):
+                    self.assertEqual(self.client.get(endpoint).status_code, status_code)
+                return run
+            test = make_test(endpoint, status_code)
+            test.__name__ = name
+            test.__doc__ = '`%s` should respond with a %d' % (endpoint, status_code)
+            attrs[test_name] = test
         return super(BuildTestCase, cls).__new__(cls, name, bases, attrs)
 
 
