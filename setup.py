@@ -3,6 +3,7 @@
 django-proofread
 ================
 
+Test your public URLs without writing tests!
 """
 from setuptools import setup, find_packages
 
@@ -14,7 +15,7 @@ setup(
     author='Matt Robenolt',
     author_email='matt@ydekproductions.com',
     url='https://github.com/mattrobenolt/django-proofread',
-    description='Do some stuff',
+    description='Test your public URLs without writing tests!',
     long_description=__doc__,
     license='BSD',
     packages=find_packages(),
