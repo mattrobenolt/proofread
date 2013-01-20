@@ -32,3 +32,9 @@ PROOFREAD_FAILURES = (
     '/lolidontexist',
     'idontexisteither'
 )
+
+PROOFREAD_ENDPOINTS = (
+    ('/post/', 200, 'POST', {'': 'yep'}),
+    ('/post/', 405, 'GET'),
+    ('/',)  # Redundant, but making sure the defaults get filled in properly
+)
