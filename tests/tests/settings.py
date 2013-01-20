@@ -1,7 +1,8 @@
 import sys
 import os.path
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+CWD = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+sys.path.insert(0, CWD)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -20,7 +21,7 @@ INSTALLED_APPS = (
     'django_proofread',
 )
 
-TEMPLATE_DIRS = 'templates/',
+TEMPLATE_DIRS = os.path.join(CWD, 'tests/templates/'),
 
 PROOFREAD_SUCCESS = (
     '/',
