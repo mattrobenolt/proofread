@@ -78,7 +78,7 @@ $ curl https://raw.github.com/mattrobenolt/django-proofread/master/hooks/pre-com
 Proofread generates a dynamic test for each url. What that means, is that each url will product it's own success/failure separate from the rest with a name that indicates which endpoint was run and what the success code should have been.
 
 
-![](http://i.imgur.com/S82pC9E.png)
+![](http://i.imgur.com/YGDfflh.png)
 
 ## Questions or problems?
  * [Issue Tracker](https://github.com/mattrobenolt/django-proofread/issues)
