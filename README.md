@@ -11,7 +11,7 @@ This layer of testing yields a few immediate benefits:
  * Will usually pick up general `SyntaxError`s.
  * Asserts that your public URLs are correct and will always be correct.
 
-Proofread pairs well as a `pre-commit` hook to try and prevent some obvious mistakes.
+Proofread pairs well as a [`pre-commit`](#the-pre-commit-hook) hook to try and prevent some obvious mistakes.
 
 ## Installation
 ```
