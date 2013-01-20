@@ -32,7 +32,9 @@ The only configuration that needs to be done is telling Proofread which urls to 
 
 **PROOFREAD_SUCCESS**: List of paths that should return successfully. These should cover all of your public URLs
 
-**PROOFREAD_FAILURES**: List of paths that should return `404 Not Found`. Good for testing a 404 page, or a page that was explicitly removed.
+**PROOFREAD_FAILURES**: List of paths that should return `404 Not Found`. Good for testing a 404 page or a page that was explicitly removed.
+
+**PROOFREAD_ENDPOINTS** *(advanced)*: A list of tuples that represent a raw request. All fields are optional except `path`: `(path, status, method, post_data)`
 
 This configuration goes right inside your `settings.py`.
 
@@ -45,6 +47,12 @@ PROOFREAD_SUCCESS = (
 
 PROOFREAD_FAILURES = (
     '/404/', # Our 404 page should return a 404
+)
+
+PROOFREAD_ENDPOINTS = (
+    ('/post/', 405, 'GET'),  # This should return a 405 on a GET request
+    ('/secured', 403),  # Should return a 403
+    ('/post/', 200, 'POST', {'foo': 'bar'}),  # Should handle some POST data
 )
 ```
 
@@ -77,8 +85,8 @@ $ curl https://raw.github.com/mattrobenolt/django-proofread/master/hooks/pre-com
 ## Other information
 Proofread generates a dynamic test for each url. What that means, is that each url will product it's own success/failure separate from the rest with a name that indicates which endpoint was run and what the success code should have been.
 
-
-![](http://i.imgur.com/YGDfflh.png)
+## Example failure output
+![](http://i.imgur.com/m0hLTqC.png)
 
 ## Questions or problems?
  * [Issue Tracker](https://github.com/mattrobenolt/django-proofread/issues)
