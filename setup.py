@@ -4,7 +4,11 @@ django-proofread
 ================
 
 Test your public URLs without writing tests!
+
+:copyright: (c) 2013 by Matt Robenolt
+:license: BSD, see LICENSE for more details.
 """
+
 from setuptools import setup, find_packages
 
 tests_require = map(lambda x: x.strip(), open('requirements.txt').readlines())
