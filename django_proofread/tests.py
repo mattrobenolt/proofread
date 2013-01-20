@@ -20,7 +20,7 @@ if not ENDPOINTS:
 class BuildTestCase(type):
     def __new__(cls, name, bases, attrs):
         for endpoint, status_code in ENDPOINTS:
-            name = 'test_url_%s_%d' % (endpoint, status_code)
+            name = 'test_proofread: GET %d %s' % (status_code, endpoint)
             attrs[name] = (lambda endpoint, expected:
                                 lambda self:
                                     self.assertEqual(self.client.get(endpoint).status_code, expected)
