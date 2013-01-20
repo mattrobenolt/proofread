@@ -2,16 +2,24 @@ import unittest
 from django.conf import settings
 from django.test.client import Client
 
-ENDPOINTS = getattr(settings, 'PROOFREAD_ENDPOINTS', None)
-if ENDPOINTS is None:
+OK = 200
+NOT_FOUND = 404
+
+ENDPOINTS = set()
+for key, status in (('SUCCESS', OK), ('FAILURES', NOT_FOUND)):
+    for endpoint in getattr(settings, 'PROOFREAD_%s' % key, ()):
+        if not endpoint.startswith('/'):
+            endpoint = '/' + endpoint
+        ENDPOINTS.add((endpoint, status))
+
+if not ENDPOINTS:
     import warnings
-    warnings.warn('settings.PROOFREAD_ENDPOINTS is missing')
-    ENDPOINTS = {}
+    warnings.warn("You haven't specified any urls for Proofread to test!")
 
 
 class BuildTestCase(type):
     def __new__(cls, name, bases, attrs):
-        for endpoint, status_code in ENDPOINTS.items():
+        for endpoint, status_code in ENDPOINTS:
             name = 'test_url_%s_%d' % (endpoint, status_code)
             attrs[name] = (lambda endpoint, expected:
                                 lambda self:

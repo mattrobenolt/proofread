@@ -22,8 +22,12 @@ INSTALLED_APPS = (
 
 TEMPLATE_DIRS = 'templates/',
 
-PROOFREAD_ENDPOINTS = {
-    '/': 200,
-    '/thisisawesome/': 200,
-    '/lolthisdoesntexist/': 404,
-}
+PROOFREAD_SUCCESS = (
+    '/',
+    'thisisawesome/',
+)
+
+PROOFREAD_FAILURES = (
+    '/lolidontexist',
+    'idontexisteither'
+)
