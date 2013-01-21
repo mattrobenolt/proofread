@@ -17,7 +17,7 @@ tests_require = map(lambda x: x.strip(), open('requirements.txt').readlines())
 
 setup(
     name='proofread',
-    version='0.1.0',
+    version='0.1.1',
     author='Matt Robenolt',
     author_email='matt@ydekproductions.com',
     url='https://github.com/mattrobenolt/proofread',
