@@ -21,7 +21,7 @@ INSTALLED_APPS = (
     'proofread.contrib.django_proofread',
 )
 
-TEMPLATE_DIRS = os.path.join(CWD, 'tests/templates/'),
+TEMPLATE_DIRS = os.path.join(CWD, 'django_tests/templates/'),
 
 PROOFREAD_SUCCESS = (
     '/',
@@ -34,7 +34,7 @@ PROOFREAD_FAILURES = (
 )
 
 PROOFREAD_ENDPOINTS = (
-    ('/post/', 200, 'POST', {'': 'yep'}),
+    ('/post/', 200, 'POST', {'a': 'yep'}),
     ('/post/', 405, 'GET'),
     ('/',)  # Redundant, but making sure the defaults get filled in properly
 )

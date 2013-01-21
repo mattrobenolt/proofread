@@ -6,6 +6,6 @@ publish:
 	python setup.py sdist upload
 
 test:
-	cd tests; ./manage.py test
+	cd django_tests; ./manage.py test
 
 .PHONY: clean publish test
