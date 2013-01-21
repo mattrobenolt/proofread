@@ -18,7 +18,7 @@ ROOT_URLCONF = 'tests.urls'
 WSGI_APPLICATION = 'tests.wsgi.application'
 
 INSTALLED_APPS = (
-    'django_proofread',
+    'proofread.contrib.django_proofread',
 )
 
 TEMPLATE_DIRS = os.path.join(CWD, 'tests/templates/'),

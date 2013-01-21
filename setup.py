@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 """
-django-proofread
-================
+Proofread
+=========
 
-Test your public URLs without writing tests!
+Test your web app without writing tests!
+
+Compatible with Django and Flask.
 
 :copyright: (c) 2013 by Matt Robenolt
 :license: BSD, see LICENSE for more details.
@@ -14,12 +16,12 @@ from setuptools import setup, find_packages
 tests_require = map(lambda x: x.strip(), open('requirements.txt').readlines())
 
 setup(
-    name='django-proofread',
+    name='proofread',
     version='0.1.0',
     author='Matt Robenolt',
     author_email='matt@ydekproductions.com',
-    url='https://github.com/mattrobenolt/django-proofread',
-    description='Test your public URLs without writing tests!',
+    url='https://github.com/mattrobenolt/proofread',
+    description='Test your web app without writing tests!',
     long_description=__doc__,
     license='BSD',
     packages=find_packages(),

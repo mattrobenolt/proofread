@@ -1,6 +1,6 @@
 """
-django_proofread.tests
-~~~~~~~~~~~~~~~~~~~~~~
+proofread.base
+~~~~~~~~~~~~~~
 
 :copyright: (c) 2013 by Matt Robenolt
 :license: BSD, see LICENSE for more details.
@@ -8,27 +8,10 @@ django_proofread.tests
 
 import uuid
 import unittest
-from django.conf import settings
-from django.test.client import Client
-from django.core.handlers.wsgi import STATUS_CODE_TEXT
-
-
-ENDPOINTS = []
-for endpoint in getattr(settings, 'PROOFREAD_ENDPOINTS', []):
-    if len(endpoint) < 4:
-        endpoint = endpoint + ('', 200, 'GET', None)[len(endpoint):]
-    ENDPOINTS.append(endpoint)
-
-for key, status in (('SUCCESS', 200), ('FAILURES', 404)):
-    for endpoint in getattr(settings, 'PROOFREAD_%s' % key, ()):
-        ENDPOINTS.append((endpoint, status, 'GET', None))
-
-if not ENDPOINTS:
-    import warnings
-    warnings.warn("You haven't specified any urls for Proofread to test!")
 
 
 def make_test(path, status, method='GET', data=None):
+    """ Generate a test method """
     def run(self):
         response = getattr(self.client, method.lower())(path, data or {})
         self.assertEqual(response.status_code, status)
@@ -37,10 +20,13 @@ def make_test(path, status, method='GET', data=None):
 
 class BuildTestCase(type):
     def __new__(cls, name, bases, attrs):
-        for path, status, method, data in ENDPOINTS:
+        endpoints = attrs.get('endpoints', [])
+        status_code_text = attrs.get('status_code_text', {})
+
+        for path, status, method, data in endpoints:
             if not path.startswith('/'):
                 path = '/' + path
-            status_text = STATUS_CODE_TEXT.get(status, 'UNKNOWN')
+            status_text = status_code_text.get(status, 'UNKNOWN')
 
             test = make_test(path, status, method, data)
             test.__name__ = name
@@ -54,8 +40,8 @@ class BuildTestCase(type):
         return super(BuildTestCase, cls).__new__(cls, name, bases, attrs)
 
 
-class Endpoints(unittest.TestCase):
+class BaseTestCase(unittest.TestCase):
     __metaclass__ = BuildTestCase
 
-    def setUp(self):
-        self.client = Client()
+    endpoints = ()
+    status_code_text = {}

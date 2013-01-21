@@ -1,5 +1,7 @@
 # Proofread
-**Proofread** will allow you to add a quick layer of tests for your Django project without actually writing any tests.
+**Proofread** will allow you to add a quick layer of tests for your web project without actually writing any tests.
+
+*Currently compatible with Django*
 
 ## Why do I need this?
 A very common approach to testing is a layer of tests that just make sure your site is working by accessing the public urls. Proofread allows you to configure a list of urls that need to work and Proofread will do the rest.
@@ -7,6 +9,7 @@ A very common approach to testing is a layer of tests that just make sure your s
 Proofread is great and simple to get into your project without needing to fully understand how to write your own tests. It **Just Works™**.
 
 This layer of testing yields a few immediate benefits:
+
  * It will surface a lot of missing `import` statements.
  * Will usually pick up general `SyntaxError`s.
  * Asserts that your public URLs are correct and will always be correct.
@@ -15,14 +18,14 @@ Proofread pairs well as a [`pre-commit`](#the-pre-commit-hook) hook to try and p
 
 ## Installation
 ```
-$ pip install django-proofread
+$ pip install proofread
 ```
 
 Then add to your `INSTALLED_APPS`:
 ```python
 INSTALLED_APPS = (
     # ...
-    'django_proofread',
+    'proofread.contrib.django_proofread',
     # ...
 )
 ```
@@ -77,7 +80,7 @@ A git `pre-commit` hook is provided to try and help automate this process. A `pr
 To install, run this snippet in the root of your git repository:
 
 ```
-$ curl https://raw.github.com/mattrobenolt/django-proofread/master/hooks/pre-commit.example > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+$ curl https://raw.github.com/mattrobenolt/proofread/master/hooks/pre-commit.example > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 ```
 
 **Note**: This will overwrite any existing `pre-commit` hook, if one exists.
@@ -89,5 +92,5 @@ Proofread generates a dynamic test for each url. What that means, is that each u
 ![](http://i.imgur.com/m0hLTqC.png)
 
 ## Questions or problems?
- * [Issue Tracker](https://github.com/mattrobenolt/django-proofread/issues)
+ * [Issue Tracker](https://github.com/mattrobenolt/proofread/issues)
  * [Yell at me on Twitter @mattrobenolt](https://twitter.com/mattrobenolt)

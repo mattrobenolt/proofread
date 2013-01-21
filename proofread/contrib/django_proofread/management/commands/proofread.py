@@ -1,10 +1,11 @@
 """
-django_proofread.management.commands.proofread
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+proofread.contrib.django_proofread.management.commands.proofread
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2013 by Matt Robenolt
 :license: BSD, see LICENSE for more details.
 """
+
 
 from django.core.management.base import NoArgsCommand
 from django.core.management import call_command
