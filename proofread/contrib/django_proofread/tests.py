@@ -26,6 +26,6 @@ if not ENDPOINTS:
     warnings.warn("You haven't specified any urls for Proofread to test!")
 
 
-class EndpointsTestCase(BaseTestCase, TestCase):
+class ProofreadTestCase(BaseTestCase, TestCase):
     status_code_text = STATUS_CODE_TEXT
     endpoints = ENDPOINTS
