@@ -7,7 +7,7 @@ proofread.contrib.django_proofread.tests
 """
 
 from django.conf import settings
-from django.test.client import Client
+from django.test import TestCase
 from django.core.handlers.wsgi import STATUS_CODE_TEXT
 from proofread.base import BaseTestCase
 
@@ -26,9 +26,6 @@ if not ENDPOINTS:
     warnings.warn("You haven't specified any urls for Proofread to test!")
 
 
-class Endpoints(BaseTestCase):
+class EndpointsTestCase(BaseTestCase, TestCase):
     status_code_text = STATUS_CODE_TEXT
     endpoints = ENDPOINTS
-
-    def setUp(self):
-        self.client = Client()

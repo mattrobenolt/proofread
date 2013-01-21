@@ -15,4 +15,4 @@ class Command(NoArgsCommand):
     help = 'Run the proofread endpoint tests'
 
     def handle_noargs(self, **options):
-        call_command('test', 'django_proofread.Endpoints', **options)
+        call_command('test', 'django_proofread.EndpointsTestCase', **options)
