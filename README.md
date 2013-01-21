@@ -89,7 +89,7 @@ $ curl https://raw.github.com/mattrobenolt/proofread/master/hooks/pre-commit.exa
 Proofread generates a dynamic test for each url. What that means, is that each url will product it's own success/failure separate from the rest with a name that indicates which endpoint was run and what the success code should have been.
 
 ## Example failure output
-![](http://i.imgur.com/m0hLTqC.png)
+![](http://i.imgur.com/3p0747k.png)
 
 ## Questions or problems?
  * [Issue Tracker](https://github.com/mattrobenolt/proofread/issues)
