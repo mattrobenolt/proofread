@@ -5,7 +5,7 @@ Proofread
 
 Test your web app without writing tests!
 
-Compatible with Django and Flask.
+Compatible with Django. Flask coming soon.
 
 :copyright: (c) 2013 by Matt Robenolt
 :license: BSD, see LICENSE for more details.
