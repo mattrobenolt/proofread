@@ -13,11 +13,11 @@ Compatible with Django. Flask coming soon.
 
 from setuptools import setup, find_packages
 
-tests_require = map(lambda x: x.strip(), open('requirements.txt').readlines())
+tests_require = ['Django']
 
 setup(
     name='proofread',
-    version='0.1.1',
+    version='0.1.2',
     author='Matt Robenolt',
     author_email='matt@ydekproductions.com',
     url='https://github.com/mattrobenolt/proofread',
